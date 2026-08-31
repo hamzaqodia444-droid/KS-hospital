@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>KS Hospital - Patient Dashboard</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        KS Hospital
+    </div>
+
+    <button onclick="logout()">
+        Logout
+    </button>
+
+</header>
+
+
+<main>
+
+<h1>Patient Dashboard</h1>
+
+<p>
+Welcome:
+<span id="username"></span>
+</p>
+
+
+<section class="cards">
+
+<div class="card">
+<h3>My Profile</h3>
+<p>Personal information and health details.</p>
+</div>
+
+
+<div class="card">
+<h3>Medical Records</h3>
+<p>Your diagnosis and medical history.</p>
+</div>
+
+
+<div class="card">
+<h3>Prescriptions</h3>
+<p>Medicines prescribed by your doctor.</p>
+</div>
+
+
+<div class="card">
+<h3>Appointments</h3>
+<p>Your upcoming hospital appointments.</p>
+</div>
+
+
+<div class="card">
+<h3>Laboratory Results</h3>
+<p>Your medical test results.</p>
+</div>
+
+
+<div class="card">
+<h3>Radiology</h3>
+<p>Your imaging reports.</p>
+</div>
+
+
+</section>
+
+</main>
+
+
+<script>
+
+document.getElementById("username").innerHTML =
+localStorage.getItem("username");
+
+
+function logout(){
+
+localStorage.clear();
+
+window.location.href="../login.html";
+
+}
+
+</script>
+
+
+</body>
+
+</html>

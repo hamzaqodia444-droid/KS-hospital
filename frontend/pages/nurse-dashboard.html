@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>KS Hospital - Nurse Dashboard</title>
+
+<link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<div class="logo">
+KS Hospital
+</div>
+
+
+<button onclick="logout()">
+Logout
+</button>
+
+
+</header>
+
+
+
+<main>
+
+
+<h1>Nurse Dashboard</h1>
+
+
+<p>
+Welcome:
+<span id="username"></span>
+</p>
+
+
+
+<section class="cards">
+
+
+<div class="card">
+
+<h3>Assigned Patients</h3>
+
+<p>
+View patients assigned by doctors.
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>Doctor Instructions</h3>
+
+<p>
+Review medical instructions and treatment plans.
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>Medication Management</h3>
+
+<p>
+Follow medication schedules and patient care plans.
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>Nursing Notes</h3>
+
+<p>
+Add nursing observations and patient updates.
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>Patient Status</h3>
+
+<p>
+Update patient care status.
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>Reports</h3>
+
+<p>
+Send nursing reports to hospital administration.
+</p>
+
+</div>
+
+
+
+</section>
+
+
+</main>
+
+
+
+<script>
+
+document.getElementById("username").innerHTML =
+localStorage.getItem("username");
+
+
+function logout(){
+
+localStorage.clear();
+
+window.location.href="../login.html";
+
+}
+
+</script>
+
+
+</body>
+
+</html>

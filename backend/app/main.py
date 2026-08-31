@@ -1,0 +1,92 @@
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
+from app.database.connection import Base, engine
+
+
+# Load database models
+from app.models.user import User
+from app.models.patient import Patient
+from app.models.doctor import Doctor
+from app.models.nurse import Nurse
+from app.models.medical_record import MedicalRecord
+from app.models.medicine import Medicine
+from app.models.prescription import Prescription
+from app.models.appointment import Appointment
+from app.models.department import Department
+from app.models.lab_test import LabTest
+from app.models.nursing_note import NursingNote
+from app.models.doctor_patient import DoctorPatient
+
+
+
+from app.routes.auth import router as auth_router
+from app.routes.doctor import router as doctor_router
+from app.routes.patient import router as patient_router
+from app.routes.nurse import router as nurse_router
+from app.routes.admin import router as admin_router
+from app.routes.medical_record import router as medical_record_router
+from app.routes.medicine import router as medicine_router
+from app.routes.prescription import router as prescription_router
+from app.routes.appointment import router as appointment_router
+from app.routes.department import router as department_router
+from app.routes.lab_test import router as lab_test_router
+from app.routes.radiology import router as radiology_router
+from app.routes.admission import router as admission_router
+from app.routes.billing import router as billing_router
+
+
+
+Base.metadata.create_all(bind=engine)
+
+
+app = FastAPI(
+    title="HHH Hospital System",
+    version="1.0"
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://127.0.0.1:5500",
+        "http://localhost:5500"
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+app.include_router(auth_router)
+app.include_router(doctor_router)
+app.include_router(patient_router)
+app.include_router(nurse_router)
+app.include_router(admin_router)
+app.include_router(medical_record_router)
+app.include_router(medicine_router)
+app.include_router(prescription_router)
+app.include_router(appointment_router)
+app.include_router(department_router)
+app.include_router(lab_test_router)
+app.include_router(radiology_router)
+app.include_router(admission_router)
+app.include_router(billing_router)
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+
+app.mount("/static", StaticFiles(directory="/root/HHH/frontend"), name="static")
+
+@app.get("/")
+async def home():
+    return FileResponse("/root/HHH/frontend/index.html")
+
+@app.get("/login")
+async def login_page():
+    return FileResponse("/root/HHH/frontend/login.html")
+
+@app.get("/dashboard")
+async def dashboard():
+    return FileResponse("/root/HHH/frontend/dashboard.html")
+
+@app.get("/register")
+async def register():
+    return FileResponse("/root/HHH/frontend/register.html")

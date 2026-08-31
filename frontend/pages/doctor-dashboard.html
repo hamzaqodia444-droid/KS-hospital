@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>KS Hospital - Doctor Dashboard</title>
+
+<link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<div class="logo">
+KS Hospital
+</div>
+
+
+<button onclick="logout()">
+Logout
+</button>
+
+
+</header>
+
+
+
+<main>
+
+
+<h1>Doctor Dashboard</h1>
+
+
+<p>
+Welcome:
+<span id="username"></span>
+</p>
+
+
+
+<section class="cards">
+
+
+<div class="card">
+
+<h3>My Patients</h3>
+
+<p>
+View and manage assigned patients.
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>Medical Records</h3>
+
+<p>
+Create and review patient medical records.
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>Prescriptions</h3>
+
+<p>
+Create prescriptions and manage treatments.
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>Laboratory Requests</h3>
+
+<p>
+Request laboratory tests for patients.
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>Radiology Requests</h3>
+
+<p>
+Request radiology examinations.
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>Nurse Communication</h3>
+
+<p>
+Send instructions and medical notes to nurses.
+</p>
+
+</div>
+
+
+
+</section>
+
+
+</main>
+
+
+
+<script>
+
+document.getElementById("username").innerHTML =
+localStorage.getItem("username");
+
+
+function logout(){
+
+localStorage.clear();
+
+window.location.href="../login.html";
+
+}
+
+</script>
+
+
+</body>
+
+</html>

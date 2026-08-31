@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>KS Hospital - Admin Dashboard</title>
+
+<link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<div class="logo">
+KS Hospital
+</div>
+
+
+<button onclick="logout()">
+Logout
+</button>
+
+
+</header>
+
+
+
+<main>
+
+
+<h1>Admin Dashboard</h1>
+
+
+<p>
+Welcome:
+<span id="username"></span>
+</p>
+
+
+
+<section class="cards">
+
+
+<div class="card">
+
+<h3>Hospital Overview</h3>
+
+<p>
+Users: <span id="users">0</span>
+</p>
+
+<p>
+Patients: <span id="patients">0</span>
+</p>
+
+<p>
+Doctors: <span id="doctors">0</span>
+</p>
+
+<p>
+Nurses: <span id="nurses">0</span>
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>Patient Management</h3>
+
+<p>
+Manage patient accounts and medical information.
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>Doctor Management</h3>
+
+<p>
+Manage doctors and medical staff.
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>Nurse Management</h3>
+
+<p>
+Manage nurses and assignments.
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>Departments</h3>
+
+<p>
+Manage hospital departments and services.
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>Medical Reports</h3>
+
+<p>
+Review hospital medical activity reports.
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>Billing Management</h3>
+
+<p>
+Manage invoices and financial records.
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>Audit Logs</h3>
+
+<p>
+Monitor system activities and security events.
+</p>
+
+</div>
+
+
+
+</section>
+
+
+</main>
+
+
+
+<script>
+
+document.getElementById("username").innerHTML =
+localStorage.getItem("username");
+
+
+function logout(){
+
+localStorage.clear();
+
+window.location.href="../login.html";
+
+}
+
+</script>
+
+
+<script src="../js/admin.js"></script>
+
+</body>
+
+</html>

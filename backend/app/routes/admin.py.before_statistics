@@ -1,0 +1,82 @@
+from fastapi import APIRouter, Depends, HTTPException
+
+from sqlalchemy.orm import Session
+
+from app.database.connection import get_database
+
+from app.core.dependencies import require_role
+
+from app.models.user import User
+
+from app.schemas.admin import CreateStaff
+
+from app.services.admin_service import create_staff
+
+
+
+router = APIRouter(
+    prefix="/admin",
+    tags=["Admin"]
+)
+
+
+
+
+
+@router.get("/dashboard")
+def admin_dashboard(
+    current_user: User = Depends(
+        require_role("ADMIN")
+    )
+):
+
+    return {
+
+        "success": True,
+
+        "message": "Welcome Administrator",
+
+        "username": current_user.username,
+
+        "role": current_user.role
+
+    }
+
+
+
+
+
+@router.post("/create-staff")
+def create_staff_account(
+    staff: CreateStaff,
+    db: Session = Depends(get_database),
+    current_user: User = Depends(
+        require_role("ADMIN")
+    )
+):
+
+    user, error = create_staff(
+        db,
+        staff
+    )
+
+
+    if error:
+
+        raise HTTPException(
+            status_code=400,
+            detail=error
+        )
+
+
+    return {
+
+        "success": True,
+
+        "message": "Staff account created",
+
+        "username": user.username,
+
+        "role": user.role
+
+    }
